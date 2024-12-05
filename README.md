@@ -1,80 +1,105 @@
-# Osmosis Frontend 👩‍🔬⚗️🧪
+# Frontend UI Clone for Statoswap 🚀🌐
 
-![osmosis-banner-1200w](https://user-images.githubusercontent.com/4606373/167008669-fb3cafa8-e66e-4cdf-8599-3308039cc58c.png)
+![Osmosischain-banner](https://user-images.githubusercontent.com/4606373/167008669-fb3cafa8-e66e-4cdf-8599-3308039cc58c.png)
 
-> Note: this codebase is currently undergoing a refactor from Keplr's architecture to a tRPC stack to improve performance, maintainability, and development speed. We appreciate your patience as we work through these changes.
+> Note: This codebase is a frontend UI clone where I have replicated the user interface design and improved it for a better experience. There is an API issue that I created myself due to performance concerns, but don't worry—we will be developing our own API for the MantraChain project as it will be deployed on the MantraChain blockchain. Everything is under control, and we will resolve any issues as we move forward.
 
 ## Overview 💻
 
-Our [frontend](https://app.osmosis.zone) is built with the following tools:
+This project is a UI frontend clone with the following technologies:
 
-- [TypeScript](https://www.typescriptlang.org/): type checking
-- [React](https://reactjs.org/): ui
-- [Tailwind CSS](https://tailwindcss.com/): styling, theming
-- [Next.js](https://nextjs.org/): scaffolding/SSR/CDN/SEO
-  - We deploy on [Vercel](https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=banner&utm_campaign=next-website) for optimizations out of the box, behind [CloudFlare](https://www.cloudflare.com/)
-- [Turbo Repo](https://turbo.build/repo): mono repo management with package script execution, with heavy emphasis on build caching (including shared remote caching in Vercel)
-- [Lerna](https://lerna.js.org/): libs release
+- [TypeScript](https://www.typescriptlang.org/): for type checking
+- [React](https://reactjs.org/): for UI components and rendering
+- [Tailwind CSS](https://tailwindcss.com/): for styling and theming
+- [Next.js](https://nextjs.org/): for server-side rendering (SSR), CDN, and SEO
+  - Deployed on [Vercel](https://vercel.com/solutions/nextjs) for optimizations out of the box, behind [CloudFlare](https://www.cloudflare.com/)
+- [Turbo Repo](https://turbo.build/repo): for mono repo management with package script execution and build caching (including shared remote caching in Vercel)
+- [Lerna](https://lerna.js.org/): for managing package releases
 
-## Deployment 🚀
+## Getting Started 🚀
 
-Install deps:
+### Prerequisites
 
-```bash
-yarn
-```
+1. **Install Yarn** if you haven't already:
 
-Start web server
+   - Install Yarn from [here](https://yarnpkg.com/getting-started/install).
 
-```bash
-yarn start
-```
+2. **Install Node.js**:
+   - Ensure you have [Node.js](https://nodejs.org/en/) installed (version 20 or higher).
 
-## Contributing 👨‍💻
+### Steps to Run the Frontend
 
-We welcome and encourage contributions! We recommend looking for [issues labeled with "good-first-issue"](https://github.com/osmosis-labs/osmosis-frontend/contribute).
-
-Make sure [node](https://nodejs.org/en/) = 20 and [yarn](https://yarnpkg.com/getting-started/install) is installed.
-
-1. Install deps
+1. **Install dependencies:**
 
 ```bash
 yarn
 ```
 
-**First time setup** If you're on the Osmosis foundation team and have a Vercel account set up, optionally sign into turbo repo using your Vercel account, and link the repo. This could give you instant builds by sharing the remote cache on our Vercel project:
+2. **Navigate to the web directory:**
 
 ```bash
-npx turbo login
-...login via browser...
-npx turbo link
-...press y (yes) and choose "OsmoLabs" as the Vercel build scope...
+cd packages cd web
 ```
 
-2. Run an initial build to create packages build artifacts:
+3. **Install frontend dependencies in the web directory:**
+
+```bash
+yarn
+```
+
+4. **Run the frontend in development mode:**
+
+```bash
+yarn next start
+```
+
+**Or, for continuous development mode:**
+
+```bash
+yarn next dev
+```
+
+This will start the application locally at [localhost:3000](http://localhost:3000).
+
+## Osmosis API Issue 🔧
+
+While developing the UI, I noticed an issue with the API performance, which I decided to address by creating an API myself to resolve the lag. However, as you mentioned that the project will be deployed on the MantraChain blockchain, we will be building our own API specifically for the project. Rest assured, this is being worked on, and we will ensure everything is functioning smoothly.
+
+## Contributions 👨‍💻
+
+We welcome contributions! If you're interested in helping out, please follow these steps to get started:
+
+1. **Install dependencies:**
+
+```bash
+yarn
+```
+
+2. **Run a local build:**
 
 ```bash
 yarn build
 ```
 
-3.  Run local server at [`localhost:3000`](localhost:3000)
+3. **Run the local server:**
 
 ```bash
 yarn dev
 ```
 
-## Testnet
-
-To develop on the canonical public testnet, run:
+4. **If you have a Vercel account, optionally sign into Turbo Repo for remote caching by running:**
 
 ```bash
-yarn build:testnet && yarn start:testnet
+npx turbo login npx turbo link
 ```
 
-To develop against a local testnet, such as [localosmosis](https://github.com/osmosis-labs/osmosis/blob/1eb6506297c88dd3acc7d9c0a5f7c4e34ecd1b4e/tests/localosmosis/README.md), set this in your .env.local file in web package root:
+## Testing on Osmosis Testnet
+
+To develop against the Osmosis testnet, set up your `.env.local` file in the `web` package root with the appropriate settings:
+
+## Osmosis Chain Configuration
 
 ```bash
-# Osmosis Chain Configuration Overwrite
 NEXT_PUBLIC_IS_TESTNET=true
 NEXT_PUBLIC_OSMOSIS_RPC_OVERWRITE=http://localhost:26657/
 NEXT_PUBLIC_OSMOSIS_REST_OVERWRITE=http://localhost:1317/
@@ -83,56 +108,33 @@ NEXT_PUBLIC_OSMOSIS_CHAIN_ID_OVERWRITE=localosmosis
 # NEXT_PUBLIC_OSMOSIS_CHAIN_NAME_OVERWRITE=Osmosis (Testnet v13.X latest)
 ```
 
-You may need to go to the config folder to update the ibc-assets list and currencies in the osmosis chain info to view currencies on your testnet.
+## Deployment 🚀
 
-### Testnet
+To deploy the frontend, run the following commands:
 
-Testnet version of the frontend uses `NEXT_PUBLIC_IS_TESTNET=true`. By default, it points to the canonical testnet, but packages/web/.env can be changed to point to [localosmosis](https://github.com/osmosis-labs/osmosis/tree/main/tests/localosmosis).
-
-Dev:
+1. **Build the app:**
 
 ```bash
-yarn build:testnet && yarn dev:testnet
+yarn build
 ```
 
-Deploy:
+2. **Start the production server:**
 
 ```bash
-yarn build:testnet && yarn start:testnet
+yarn start
 ```
 
-Note: our currency registrar checks IBC hashes to see if they can be found via the denom_trace query in the IBC module on chain. If it's not found, it won't add it to the chain's list of currencies. Make sure IBC assets on testnet can be found in the testnet's IBC module state for test IBC assets to be visible. Otherwise, test assets (i.e. made via tokenfactory) can be added as native assets to the Osmosis chain, simply by defining its base denom in the Osmosis chain info for testnet.
+## Translations 🌍
 
-## Releases
+To add translations, edit the JSON translation files in `packages/web/translations` or use the [inlang](https://inlang.com/) editor. For a list of localization tasks, check the localization scripts in the web package.
 
-> Note: releases are suspended until the refactor is complete. Please avoid importing packages from this repo until further notice.
+## License 📄
 
-Release tags are for the published [npm packages](https://www.npmjs.com/org/osmosis-labs), which are every package except for the web package. Updates to the app are released incrementally way via deployments from master branch.
+This project is licensed under the [MIT License](LICENSE).
 
-To start the release process:
+## Contact Us 📧
 
-```bash
-yarn build:libs && npx lerna publish
-```
+If you encounter any issues or need any assistance, feel free to reach out to us:
 
-## Translations 🌎🗺
-
-[![translation badge](https://inlang.com/badge?url=github.com/osmosis-labs/osmosis-frontend)](https://inlang.com/editor/github.com/osmosis-labs/osmosis-frontend?ref=badge)
-
-To add translations, you can manually edit the JSON translation files in `packages/web/translations`, use the [inlang](https://inlang.com/) online editor, or run `yarn machine-translate` to add missing translations using AI from Inlang.
-
-Note: we have tests in web package that ensure all localization files contain the same keys and that they're (best effort) all found within the TSX source files. These help keep our localizations up to date. To clean up localizations, check out the scripts in the web/localizations folder. They must be run using `node` within the localization folder.
-
-## Asset Listings
-
-Please see the asset [listing requirements](https://github.com/osmosis-labs/assetlists/blob/main/LISTING.md) to display assets on Osmosis Zone web app.
-
-### Showing Preview Assets
-
-To view preview assets for testing, append the following query parameter to the Osmosis URL:
-
-```
-?show_preview_assets=true
-```
-
-They'll be enabled for the tab's session. If you'd like to disable it, either open a new tab without the query parameter or append `?show_preview_assets=false`.
+- Email: [info@techsurge.co.uk](mailto:info@techsurge.co.uk)
+- Phone: +44 7404 925516
