@@ -1,0 +1,32 @@
+.DS_Store
+.idea
+node_modules
+dist
+prod
+build
+yarn-error.log
+.yarn
+
+src/styles/index.scss
+.vercel
+.turbo
+
+lerna-debug.log
+coverage
+
+tsconfig.tsbuildinfo
+packages/web/e2e/keplr-extension-manifest
+
+# Vim backup, undo files
+*.orig
+*~
+
+# Vim swap files
+.*.swp
+.*.swo
+
+packages/web/e2e/metamask-extension-manifest/
+packages/e2e/keplr-extension-manifest/
+packages/e2e/playwright-report/
+packages/e2e/test-results/
+packages/e2e/.env
